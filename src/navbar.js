@@ -5,19 +5,19 @@
 export default function navbar() {
   const navbar = document.createElement("div");
 
-  // const home = document.createElement("button");
-  // const menu = document.createElement("button");
-  // const contact = document.createElement("button");
+  const todos = document.createElement("button");
+  const notes = document.createElement("button");
+  const checklists = document.createElement("button");
 
-  // home.innerHTML = "Home";
-  // menu.innerHTML = "Menu";
-  // contact.innerHTML = "Contact";
+  todos.innerHTML = "Todos";
+  notes.innerHTML = "Notes";
+  checklists.innerHTML = "Checklists";
 
-  // navbar.classList.add("navbar");
+  navbar.classList.add("navbar");
 
-  // navbar.appendChild(home);
-  // navbar.appendChild(menu);
-  // navbar.appendChild(contact);
+  navbar.appendChild(todos);
+  navbar.appendChild(notes);
+  navbar.appendChild(checklists);
 
   // home.addEventListener("click", loadHome);
   // menu.addEventListener("click", loadMenu);

@@ -1,6 +1,6 @@
 export default function home() {
   const homeTab = document.createElement("div");
-  homeTab.classList.add("home");
+  homeTab.setAttribute("id", "home");
 
   homeTab.innerHTML = "";
 

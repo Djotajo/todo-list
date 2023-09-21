@@ -11,8 +11,8 @@ export default function pageLoad() {
   currentTab.classList.add("currentTab");
 
   content.appendChild(header());
-  content.appendChild(navbar());
   content.appendChild(home());
+  document.getElementById("home").appendChild(navbar());
   content.appendChild(footer());
 
   document.getElementById("githubLogo").src = gitLogo;

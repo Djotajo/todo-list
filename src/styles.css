@@ -1,0 +1,70 @@
+#content {
+  width: auto;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 8fr 1fr;
+}
+
+.header {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  justify-content: center;
+}
+
+#home {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1vh;
+  background-color: bisque;
+}
+
+/* button {
+  padding: 10px;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+button:hover {
+  color: red;
+} */
+
+footer > img {
+  max-width: 5vw;
+  max-height: 10vh;
+  position: absolute;
+  left: 10%;
+  bottom: 1px;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 1vh;
+  color: white;
+  background-color: blueviolet;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+}
+
+#githubLogo {
+  width: 1.5em;
+  height: auto;
+}
