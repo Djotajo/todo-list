@@ -1,6 +1,6 @@
-// import loadHome from "./home";
-// import loadMenu from "./menu.js";
-// import loadContact from "./contact";
+import loadTodos from "./todos";
+// import loadNotes from "./notes";
+// import loadChecklists from "./checklists";
 
 export default function navbar() {
   const navbar = document.createElement("div");
@@ -19,9 +19,9 @@ export default function navbar() {
   navbar.appendChild(notes);
   navbar.appendChild(checklists);
 
-  // home.addEventListener("click", loadHome);
-  // menu.addEventListener("click", loadMenu);
-  // contact.addEventListener("click", loadContact);
+  todos.addEventListener("click", loadTodos);
+  // notes.addEventListener("click", loadNotes);
+  // checklists.addEventListener("click", loadChecklists);
 
   return navbar;
 }

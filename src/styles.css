@@ -2,7 +2,7 @@
   width: auto;
   height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-rows: 10% 85% 5%;
 }
 
 .header {
@@ -25,6 +25,10 @@
   justify-content: flex-start;
   gap: 1vh;
   background-color: bisque;
+}
+
+.workspace {
+  background-color: aquamarine;
 }
 
 /* button {

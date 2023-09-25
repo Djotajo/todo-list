@@ -1,7 +1,8 @@
 import header from "./header";
-import navbar from "./navbar";
-import footer from "./footer";
 import home from "./home";
+import navbar from "./navbar";
+import workspace from "./workspace";
+import footer from "./footer";
 import gitLogo from "../assets/github-mark-white.png";
 
 export default function pageLoad() {
@@ -13,6 +14,7 @@ export default function pageLoad() {
   content.appendChild(header());
   content.appendChild(home());
   document.getElementById("home").appendChild(navbar());
+  document.getElementById("home").appendChild(workspace());
   content.appendChild(footer());
 
   document.getElementById("githubLogo").src = gitLogo;
