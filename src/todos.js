@@ -7,27 +7,29 @@ export default function loadTodos() {
   const addNewTodo = document.createElement("button");
   addNewTodo.innerHTML = "Add New Todo or not Todo";
 
-  display.innerHTML = `<dialog id="addBook">
-      <form id="myForm">
+  display.innerHTML = `<dialog id="addTodo">
+      <form id="todoForm">
           <p>
               <label for="title">Title</label>
               <input type="text" size="30" id="title" name="title" required />
           </p>
+          
           <p>
-              <label for="author">Author</label>
-              <input type="text" size="30" id="author" name="author" required />
+              <label for="description">Description</label>
+              <textarea rows="6" cols="30" id="description" name="description" required></textarea>
           </p>
           <p>
-              <label for="pages">Pages</label>
-              <input type="number" size="30" id="pages" name="pages" required />
+              <label for="deadline">Deadline</label>
+              <input type="date" size="30" id="deadline" name="deadline" required />
           </p>
           <p>
-              <label for="status">
-                  Status
-                  <select id="status" name="status" required>
+              <label for="priority">
+                  Priority
+                  <select id="priority" name="priority" required>
                     <option value="" disabled selected>Choose…</option>
-                    <option>Read</option>
-                    <option>Not read</option>
+                    <option>High</option>
+                    <option>Medium</option>
+                    <option>Low</option>
                   </select>
               </label>
           </p>
@@ -56,103 +58,55 @@ export default function loadTodos() {
   hope.appendChild(addNewTodo);
 
   //   const addNewTodo = document.getElementById("showDialog");
-  const addBook = document.getElementById("addBook");
-  const confirmBtn = addBook.querySelector("#confirmBtn");
+  const addTodo = document.getElementById("addTodo");
+  const confirmBtn = addTodo.querySelector("#confirmBtn");
+  const closeBtn = document.querySelector("#closeBtn");
 
   const title = document.querySelector("#title");
-  const author = document.querySelector("#author");
-  const pages = document.querySelector("#pages");
-  const bookStatus = document.querySelector("#status");
+  const description = document.querySelector("#description");
+  const deadline = document.querySelector("#deadline");
+  const priority = document.querySelector("#priority");
 
   let createnew;
 
+  let todosTodos = [];
+
   addNewTodo.addEventListener("click", () => {
-    addBook.showModal();
+    addTodo.showModal();
   });
 
-  const closeBtn = document.querySelector("#closeBtn");
-
   closeBtn.addEventListener("click", () => {
-    addBook.close();
-    myForm.reset();
+    addTodo.close();
+    todoForm.reset();
   });
 
   confirmBtn.addEventListener("click", (event) => {
-    const formCheck = document.getElementById("myForm").checkValidity();
+    const formCheck = document.getElementById("todoForm").checkValidity();
     if (!formCheck) {
-      document.getElementById("myForm").reportValidity();
+      document.getElementById("todoForm").reportValidity();
     } else {
       event.preventDefault();
-      createnew = [title.value, author.value, pages.value, bookStatus.value];
-      const newbook = new Book(
-        createnew[0],
-        createnew[1],
-        createnew[2],
-        createnew[3]
+      const todo = new newTodo(
+        title.value,
+        description.value,
+        deadline.value,
+        priority.value
       );
-      newbook.number = myLibrary.findIndex(
-        (book) => book.title === newbook.title
-      );
-      addBookToLibrary(newbook);
-      refresh();
-      addBook.close();
+      // naredne dvije linije treba obrisati, napraviti posebnu funkciju za dodavanje u spisak todos
+      todosTodos.push(todo);
+      console.log(todosTodos);
+
+      // razmisliti ima li potrebe za indeksom
+      todo.number = todosTodos.findIndex((todos) => todos.title === todo.title);
+      console.log(todo.number);
+      // addBookToLibrary(newbook);
+      // refresh();
+      addTodo.close();
     }
-    myForm.reset();
+    todoForm.reset();
   });
 
-  refresh();
+  // refresh();
 
-  document.getElementById("myForm").checkValidity();
-}
-
-{
-  /* <dialog id="addBook">
-    <form id="myForm">
-        <p>
-            <label for="title">Title</label>
-            <input type="text" size="30" id="title" name="title" required />
-        </p>
-        <p>
-            <label for="author">Author</label>
-            <input type="text" size="30" id="author" name="author" required />
-        </p>
-        <p>
-            <label for="pages">Pages</label>
-            <input type="number" size="30" id="pages" name="pages" required />
-        </p>
-        <p>
-            <label for="status">
-                Status
-                <select id="status" name="status" required>
-                  <option value="" disabled selected>Choose…</option>
-                  <option>Read</option>
-                  <option>Not read</option>
-                </select>
-            </label>
-        </p>
-            
-            <div>
-              <button
-                id="closeBtn"
-                value="cancel"
-                formmethod="dialog"
-                type="button">
-                Cancel
-              </button>
-              <button id="confirmBtn" value="default" formmethod="dialog">
-                Confirm
-              </button>
-            </div>
-    </form>
-</dialog>
-
-    <p>
-    <label for="showDialog" id="showDialogLabel">
-        <button id="showDialog" hidden>Add new book</button>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <title>plus-thick</title>
-            <path d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" />
-          </svg>
-        </label>
-      </p> */
+  document.getElementById("todoForm").checkValidity();
 }

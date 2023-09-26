@@ -1,6 +1,6 @@
-export default function newTodo(title, description, dueDate, priority) {
+export default function newTodo(title, description, deadline, priority) {
   this.title = title;
   this.description = description;
-  this.dueDate = dueDate;
+  this.deadline = deadline;
   this.priority = priority;
 }
