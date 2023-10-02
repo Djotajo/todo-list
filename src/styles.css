@@ -29,6 +29,11 @@
 
 .workspace {
   background-color: aquamarine;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  grid-template-rows: repeat(auto-fit, 300px);
+  gap: 1vw;
+  padding: 1vw;
 }
 
 /* button {
@@ -99,3 +104,25 @@ form {
   display: flex;
   justify-content: center;
 }
+
+.todoObject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: bisque;
+  box-shadow: 10px 10px 8px #888888;
+  gap: 1vh;
+  padding: 1vh;
+}
+
+.navbarItemContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .workspace > :nth-child(1) {
+  visibility: hidden;
+} */
