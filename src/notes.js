@@ -1,8 +1,12 @@
 import newNoteForm from "./newNoteForm";
+import newNote from "./newtodo";
+import render from "./render";
+import sortByDeadline from "./sortDeadline";
+import sortByPriority from "./sortPriority";
 
 export default function loadNotes() {
   const display = document.querySelector(".workspace");
-  display.setAttribute("id", "Todos");
+  display.setAttribute("id", "Notes");
 
   const addNewNote = document.createElement("button");
   addNewNote.innerHTML = "Add new note";

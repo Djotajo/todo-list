@@ -3,10 +3,14 @@ import render from "./render";
 import newTodoForm from "./newTodoForm";
 import sortByDeadline from "./sortDeadline";
 import sortByPriority from "./sortPriority";
+import newTodoToStorage from "./newTodoToStorage";
+import todosDisplay from "./todosDisplay";
 
 export default function loadTodos() {
   const display = document.querySelector(".workspace");
   display.setAttribute("id", "Todos");
+
+  // navbar elements
 
   const addNewTodo = document.createElement("button");
   addNewTodo.innerHTML = "Add New Todo or not Todo";
@@ -17,20 +21,19 @@ export default function loadTodos() {
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
 
-  const hope = document.getElementById("showDialogLabel");
-  const navbarAdditional = document.querySelector("#navbarAdditional");
-  navbarAdditional.innerHTML = "";
-
   const newTodoFormDiv = document.createElement("div");
   newTodoFormDiv.innerHTML = newTodoForm();
 
-  navbarAdditional.appendChild(newTodoFormDiv);
+  const navbarAdditional = document.querySelector("#navbarAdditional");
+  navbarAdditional.innerHTML = "";
 
   navbarAdditional.appendChild(addNewTodo);
   navbarAdditional.appendChild(sortByDeadlineButton);
   navbarAdditional.appendChild(sortByPriorityButton);
+  navbarAdditional.appendChild(newTodoFormDiv);
 
-  //   const addNewTodo = document.getElementById("showDialog");
+  // Form and dialog
+
   const addTodo = document.getElementById("addTodo");
   const confirmBtn = addTodo.querySelector("#confirmBtn");
   const closeBtn = document.querySelector("#closeBtn");
@@ -40,9 +43,8 @@ export default function loadTodos() {
   const deadline = document.querySelector("#deadline");
   const priority = document.querySelector("#priority");
 
-  let createnew;
-
-  let todosTodos = [];
+  //Storage
+  render(todosDisplay());
 
   addNewTodo.addEventListener("click", () => {
     addTodo.showModal();
@@ -65,27 +67,15 @@ export default function loadTodos() {
         deadline.value,
         priority.value
       );
-      // naredne dvije linije treba obrisati, napraviti posebnu funkciju za dodavanje u spisak todos
-      todosTodos.push(todo);
-      console.log(todosTodos);
-
-      // razmisliti ima li potrebe za indeksom
-      todo.number = todosTodos.findIndex((todos) => todos.title === todo.title);
-      console.log(todo.number);
-      // addBookToLibrary(newbook);
+      newTodoToStorage(todo);
       // refresh();
       addTodo.close();
     }
     todoForm.reset();
-    render(todosTodos);
+    render(todosDisplay());
   });
 
   // refresh();
 
   document.getElementById("todoForm").checkValidity();
-  render(todosTodos);
 }
-
-// window.localStorage["allTodos"] = JSON.stringify(todosTodos);
-
-// const allTodos = JSON.parse(window.localStorage["allTodos"]);
