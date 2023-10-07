@@ -7,8 +7,8 @@ export default function newNoteForm() {
           </p>
           
           <p>
-              <label for="description">Description</label>
-              <textarea rows="6" cols="30" id="description" name="description" required></textarea>
+              <label for="text">Text</label>
+              <textarea rows="6" cols="30" id="text" name="text" required></textarea>
           </p>
               <div>
                 <button

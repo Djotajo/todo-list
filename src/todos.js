@@ -1,10 +1,10 @@
 import newTodo from "./newtodo";
 import render from "./render";
 import newTodoForm from "./newTodoForm";
-import sortByDeadline from "./sortDeadline";
-import sortByPriority from "./sortPriority";
 import newTodoToStorage from "./newTodoToStorage";
 import todosDisplay from "./todosDisplay";
+import sortByDeadline from "./sortDeadline";
+import sortByPriority from "./sortPriority";
 
 export default function loadTodos() {
   const display = document.querySelector(".workspace");
@@ -43,7 +43,7 @@ export default function loadTodos() {
   const deadline = document.querySelector("#deadline");
   const priority = document.querySelector("#priority");
 
-  //Storage
+  // Storage
   render(todosDisplay());
 
   addNewTodo.addEventListener("click", () => {

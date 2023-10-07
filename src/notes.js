@@ -1,12 +1,16 @@
-import newNoteForm from "./newNoteForm";
-import newNote from "./newtodo";
+import newNote from "./newnote";
 import render from "./render";
+import newNoteForm from "./newNoteForm";
+import newNoteToStorage from "./newNoteToStorage";
+import notesDisplay from "./notesDisplay";
 import sortByDeadline from "./sortDeadline";
 import sortByPriority from "./sortPriority";
 
 export default function loadNotes() {
   const display = document.querySelector(".workspace");
   display.setAttribute("id", "Notes");
+
+  // navbar elements
 
   const addNewNote = document.createElement("button");
   addNewNote.innerHTML = "Add new note";
@@ -17,33 +21,29 @@ export default function loadNotes() {
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
 
-  //   display.innerHTML = newNoteForm();
-
-  const hope = document.getElementById("showDialogLabel");
-  const navbarAdditional = document.querySelector("#navbarAdditional");
-  navbarAdditional.innerHTML = "";
-
   const newNoteFormDiv = document.createElement("div");
   newNoteFormDiv.innerHTML = newNoteForm();
+
+  const navbarAdditional = document.querySelector("#navbarAdditional");
+  navbarAdditional.innerHTML = "";
 
   navbarAdditional.appendChild(newNoteFormDiv);
   navbarAdditional.appendChild(addNewNote);
   navbarAdditional.appendChild(sortByDeadlineButton);
   navbarAdditional.appendChild(sortByPriorityButton);
 
-  //   const addNewNote = document.getElementById("showDialog");
+  // Form and dialog
+
   const addNote = document.getElementById("addNote");
   const confirmBtn = addNote.querySelector("#confirmBtn");
   const closeBtn = document.querySelector("#closeBtn");
 
   const title = document.querySelector("#title");
-  const description = document.querySelector("#description");
-  const deadline = document.querySelector("#deadline");
-  const priority = document.querySelector("#priority");
+  const text = document.querySelector("#text");
 
-  let createnew;
+  // Storage
 
-  let todosTodos = [];
+  render(notesDisplay());
 
   addNewNote.addEventListener("click", () => {
     addNote.showModal();
@@ -60,29 +60,16 @@ export default function loadNotes() {
       document.getElementById("noteForm").reportValidity();
     } else {
       event.preventDefault();
-      const todo = new newTodo(
-        title.value,
-        description.value,
-        deadline.value,
-        priority.value
-      );
-      // naredne dvije linije treba obrisati, napraviti posebnu funkciju za dodavanje u spisak todos
-      todosTodos.push(todo);
-      console.log(todosTodos);
-
-      // razmisliti ima li potrebe za indeksom
-      todo.number = todosTodos.findIndex((todos) => todos.title === todo.title);
-      console.log(todo.number);
-      // addBookToLibrary(newbook);
+      const note = new newNote(title.value, text.value);
+      newNoteToStorage(note);
       // refresh();
       addNote.close();
     }
     noteForm.reset();
-    render(todosTodos);
+    render(notesDisplay());
   });
 
   // refresh();
 
   document.getElementById("noteForm").checkValidity();
-  render(todosTodos);
 }

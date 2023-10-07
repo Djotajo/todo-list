@@ -1,3 +1,5 @@
+import noteRemove from "./noteRemove";
+
 export default function render(lista) {
   const display = document.querySelector(".workspace");
   display.innerHTML = "";
@@ -9,7 +11,12 @@ export default function render(lista) {
       key.innerHTML = `${value}`;
       renderObject.appendChild(key);
     }
-
+    const removeItem = document.createElement("button");
+    removeItem.innerHTML = "Remove";
+    removeItem.addEventListener("click", function () {
+      noteRemove(element);
+    });
+    renderObject.appendChild(removeItem);
     display.appendChild(renderObject);
   });
 }
