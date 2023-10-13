@@ -1,6 +1,6 @@
 import loadTodos from "./todos";
 import loadNotes from "./notes";
-// import loadChecklists from "./checklists";
+import loadChecklist from "./checklists";
 
 export default function navbar() {
   const navbar = document.createElement("div");
@@ -23,7 +23,7 @@ export default function navbar() {
   notes.addEventListener("click", loadNotes);
 
   checklists.innerHTML = "Checklists";
-  // checklists.addEventListener("click", loadChecklists);
+  checklists.addEventListener("click", loadChecklist);
 
   navbar.classList.add("navbar");
 

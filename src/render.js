@@ -5,7 +5,13 @@ export default function render(lista) {
   display.innerHTML = "";
   lista.forEach((element) => {
     const renderObject = document.createElement("div");
-    renderObject.classList.add("todoObject");
+    if (element.hasOwnProperty("description")) {
+      renderObject.classList.add("todoObject");
+    } else if (element.hasOwnProperty("text")) {
+      renderObject.classList.add("noteObject");
+    } else {
+      renderObject.classList.add("checklistItemObject");
+    }
     for (const [key, value] of Object.entries(element)) {
       let key = document.createElement("p");
       key.innerHTML = `${value}`;

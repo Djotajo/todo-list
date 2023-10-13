@@ -126,3 +126,19 @@ form {
 /* .workspace > :nth-child(1) {
   visibility: hidden;
 } */
+
+#checklist {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1vh;
+  grid-auto-rows: min-content;
+}
+
+.checklistItemObject {
+  display: flex;
+  gap: 2vw;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: blanchedalmond;
+  height: 20px;
+}
