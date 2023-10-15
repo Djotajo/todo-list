@@ -1,11 +1,3 @@
-// export default function itemCheck(renderObject) {
-//   this.checked
-//     ? renderObject.classList.add("checked")
-//     : renderObject.classList.remove("checked");
-//   //   renderObject.classList.add("checked");
-//   console.log("it works");
-// }
-
 export default function updateChecklistItem(checklistItem) {
   let checklistItemsArray = [];
   console.log("bro");

@@ -3,6 +3,7 @@ import render from "./render";
 import newTodoForm from "./newTodoForm";
 import newTodoToStorage from "./newTodoToStorage";
 import todosDisplay from "./todosDisplay";
+import sortByDate from "./sortDate";
 import sortByDeadline from "./sortDeadline";
 import sortByPriority from "./sortPriority";
 
@@ -14,6 +15,12 @@ export default function loadTodos() {
 
   const addNewTodo = document.createElement("button");
   addNewTodo.innerHTML = "Add New Todo or not Todo";
+
+  const sortByDateButton = document.createElement("button");
+  sortByDateButton.innerHTML = "Sort by date";
+  sortByDateButton.addEventListener("click", function () {
+    render(sortByDate(todosDisplay()));
+  });
 
   const sortByDeadlineButton = document.createElement("button");
   sortByDeadlineButton.innerHTML = "Sort by deadline";
@@ -28,6 +35,7 @@ export default function loadTodos() {
   navbarAdditional.innerHTML = "";
 
   navbarAdditional.appendChild(addNewTodo);
+  navbarAdditional.appendChild(sortByDateButton);
   navbarAdditional.appendChild(sortByDeadlineButton);
   navbarAdditional.appendChild(sortByPriorityButton);
   navbarAdditional.appendChild(newTodoFormDiv);

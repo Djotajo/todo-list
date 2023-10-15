@@ -3,7 +3,7 @@ import render from "./render";
 import newChecklistItemForm from "./newChecklistItemForm";
 import newChecklistItemToStorage from "./newChecklistItemToStorage";
 import checklistDisplay from "./checklistDisplay";
-import sortByDeadline from "./sortDeadline";
+import sortByDate from "./sortDate";
 import sortByPriority from "./sortPriority";
 
 export default function loadChecklist() {
@@ -15,8 +15,11 @@ export default function loadChecklist() {
   const addNewChecklistItem = document.createElement("button");
   addNewChecklistItem.innerHTML = "Add new item";
 
-  const sortByDeadlineButton = document.createElement("button");
-  sortByDeadlineButton.innerHTML = "Sort by deadline";
+  const sortByDateButton = document.createElement("button");
+  sortByDateButton.innerHTML = "Sort by date";
+  sortByDateButton.addEventListener("click", function () {
+    render(sortByDate(checklistDisplay()));
+  });
 
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
@@ -29,7 +32,7 @@ export default function loadChecklist() {
 
   navbarAdditional.appendChild(newChecklistItemFormDiv);
   navbarAdditional.appendChild(addNewChecklistItem);
-  navbarAdditional.appendChild(sortByDeadlineButton);
+  navbarAdditional.appendChild(sortByDateButton);
   navbarAdditional.appendChild(sortByPriorityButton);
 
   // Form and dialog
