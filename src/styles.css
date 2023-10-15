@@ -3,6 +3,7 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 10% 85% 5%;
+  font-size: 1vw;
 }
 
 .header {
@@ -129,16 +130,33 @@ form {
 
 #checklist {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1vh;
+  grid-template-columns: 70%;
+
+  gap: 1vh;
+  grid-template-rows: min-content;
   grid-auto-rows: min-content;
+  align-items: start;
+  justify-content: center;
+}
+
+#checklist button {
+  border: 0;
+  background-color: transparent;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: grey;
 }
 
 .checklistItemObject {
-  display: flex;
-  gap: 2vw;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 1fr;
+  grid-auto-rows: min-content;
+  font-size: 1vw;
   align-items: center;
-  background-color: blanchedalmond;
-  height: 20px;
+}
+
+.checklistItemObject input {
+  height: 2vw;
 }

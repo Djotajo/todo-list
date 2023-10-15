@@ -1,4 +1,4 @@
-import loadChecklist from "./checklist";
+import loadChecklist from "./checklists";
 
 export default function checklistItemRemove(
   element,
