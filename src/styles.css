@@ -58,6 +58,7 @@ footer > img {
 }
 
 footer {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -67,6 +68,7 @@ footer {
   gap: 1vh;
   color: white;
   background-color: blueviolet;
+  overflow: hidden;
 }
 
 footer p {
@@ -159,4 +161,9 @@ form {
 
 .checklistItemObject input {
   height: 2vw;
+}
+
+#githubLogo:hover {
+  transform: rotate(360deg);
+  transition: 1000ms;
 }

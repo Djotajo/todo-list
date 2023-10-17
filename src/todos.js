@@ -24,6 +24,9 @@ export default function loadTodos() {
 
   const sortByDeadlineButton = document.createElement("button");
   sortByDeadlineButton.innerHTML = "Sort by deadline";
+  sortByDeadlineButton.addEventListener("click", function () {
+    render(sortByDeadline(todosDisplay()));
+  });
 
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
