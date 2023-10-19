@@ -18,8 +18,9 @@ export default function loadTodos() {
 
   const sortByDateButton = document.createElement("button");
   sortByDateButton.innerHTML = "Sort by date";
+  sortByDateButton.value = "off";
   sortByDateButton.addEventListener("click", function () {
-    render(sortByDate(todosDisplay()));
+    render(sortByDate(todosDisplay(), sortByDateButton));
   });
 
   const sortByDeadlineButton = document.createElement("button");
@@ -30,6 +31,9 @@ export default function loadTodos() {
 
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
+  sortByPriorityButton.addEventListener("click", function () {
+    render(sortByPriority(todosDisplay()));
+  });
 
   const newTodoFormDiv = document.createElement("div");
   newTodoFormDiv.innerHTML = newTodoForm();
