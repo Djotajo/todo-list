@@ -1,5 +1,5 @@
-export default function sortByPriority(items) {
-  return items.sort(function (a, b) {
+export default function sortByPriority(items, button) {
+  let sorted = items.sort(function (a, b) {
     let aPrio = a.priority;
     let bPrio = b.priority;
     let aFin;
@@ -30,4 +30,11 @@ export default function sortByPriority(items) {
 
     return aFin - bFin;
   });
+  if (button.value === "off") {
+    button.value = "on";
+    return sorted;
+  } else {
+    button.value = "off";
+    return sorted.reverse();
+  }
 }

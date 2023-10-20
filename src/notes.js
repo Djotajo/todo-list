@@ -4,7 +4,6 @@ import newNoteForm from "./newNoteForm";
 import newNoteToStorage from "./newNoteToStorage";
 import notesDisplay from "./notesDisplay";
 import sortByDate from "./sortDate";
-import sortByPriority from "./sortPriority";
 
 export default function loadNotes() {
   const display = document.querySelector(".workspace");
@@ -17,12 +16,10 @@ export default function loadNotes() {
 
   const sortByDateButton = document.createElement("button");
   sortByDateButton.innerHTML = "Sort by date";
+  sortByDateButton.value = "off";
   sortByDateButton.addEventListener("click", function () {
-    render(sortByDate(notesDisplay()));
+    render(sortByDate(notesDisplay(), sortByDateButton));
   });
-
-  const sortByPriorityButton = document.createElement("button");
-  sortByPriorityButton.innerHTML = "Sort by priority";
 
   const newNoteFormDiv = document.createElement("div");
   newNoteFormDiv.innerHTML = newNoteForm();
@@ -33,7 +30,6 @@ export default function loadNotes() {
   navbarAdditional.appendChild(newNoteFormDiv);
   navbarAdditional.appendChild(addNewNote);
   navbarAdditional.appendChild(sortByDateButton);
-  navbarAdditional.appendChild(sortByPriorityButton);
 
   // Form and dialog
 

@@ -4,7 +4,7 @@ import newChecklistItemForm from "./newChecklistItemForm";
 import newChecklistItemToStorage from "./newChecklistItemToStorage";
 import checklistDisplay from "./checklistDisplay";
 import sortByDate from "./sortDate";
-import sortByPriority from "./sortPriority";
+import sortByStatus from "./sortStatus";
 
 export default function loadChecklist() {
   const display = document.querySelector(".workspace");
@@ -17,12 +17,17 @@ export default function loadChecklist() {
 
   const sortByDateButton = document.createElement("button");
   sortByDateButton.innerHTML = "Sort by date";
+  sortByDateButton.value = "off";
   sortByDateButton.addEventListener("click", function () {
-    render(sortByDate(checklistDisplay()));
+    render(sortByDate(checklistDisplay(), sortByDateButton));
   });
 
-  const sortByPriorityButton = document.createElement("button");
-  sortByPriorityButton.innerHTML = "Sort by priority";
+  const sortByStatusButton = document.createElement("button");
+  sortByStatusButton.innerHTML = "Sort by status";
+  sortByStatusButton.value = "off";
+  sortByStatusButton.addEventListener("click", function () {
+    render(sortByStatus(checklistDisplay(), sortByStatusButton));
+  });
 
   const newChecklistItemFormDiv = document.createElement("div");
   newChecklistItemFormDiv.innerHTML = newChecklistItemForm();
@@ -33,7 +38,7 @@ export default function loadChecklist() {
   navbarAdditional.appendChild(newChecklistItemFormDiv);
   navbarAdditional.appendChild(addNewChecklistItem);
   navbarAdditional.appendChild(sortByDateButton);
-  navbarAdditional.appendChild(sortByPriorityButton);
+  navbarAdditional.appendChild(sortByStatusButton);
 
   // Form and dialog
 
