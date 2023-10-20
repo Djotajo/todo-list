@@ -1,11 +1,15 @@
 export default function renderProjects(projects) {
-  const projectsDiv = document.createElement("div");
+  let projectsDiv = document.createElement("div");
   //   navbarDiv = document.querySelector("#navbarAdditional");
-  console.log(projects);
-  projects.array.forEach((element) => {
-    let projectButton = document.createElement("button");
-    projectButton.innerHTML = element.title;
-    projectsDiv.appendChild(projectButton);
+  projects.forEach((element) => {
+    console.log(element);
+    let renderObject = document.createElement("div");
+    for (const [key, value] of Object.entries(element)) {
+      let key = document.createElement("p");
+      key.innerHTML = `${value}`;
+      renderObject.appendChild(key);
+      projectsDiv.appendChild(renderObject);
+    }
   });
-  //   navbarDiv.appendChild(projectsDiv);
+  return projectsDiv;
 }
