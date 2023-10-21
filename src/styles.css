@@ -167,3 +167,8 @@ form {
   transform: rotate(360deg);
   transition: 1000ms;
 }
+
+.navbar > :last-child > :last-child {
+  display: flex;
+  flex-direction: column;
+}

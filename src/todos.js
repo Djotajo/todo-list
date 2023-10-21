@@ -10,11 +10,18 @@ import sortByDate from "./sortDate";
 import sortByDeadline from "./sortDeadline";
 import sortByPriority from "./sortPriority";
 import projectsDisplay from "./projectsDisplay";
-import renderProjects from "./renderProjects";
+import projectsToNavbar from "./projectsToNavbar";
+import currentProject from "./setCurrentProject";
+import renderProject from "./renderProject";
+import projectView from "./projectView";
+import defaultProject from "./defaultProject";
+import getCurrentProject from "./getCurrentProject";
 
 export default function loadTodos() {
   const display = document.querySelector(".workspace");
   display.setAttribute("id", "Todos");
+
+  defaultProject();
 
   // navbar elements
 
@@ -61,7 +68,7 @@ export default function loadTodos() {
   navbarAdditional.appendChild(sortByPriorityButton);
   navbarAdditional.appendChild(newProjectFormDiv);
   navbarAdditional.appendChild(newTodoFormDiv);
-  navbarAdditional.appendChild(renderProjects(projectsDisplay()));
+  navbarAdditional.appendChild(projectsToNavbar(projectsDisplay()));
 
   // Form and dialog - project
 
@@ -95,7 +102,7 @@ export default function loadTodos() {
       addProject.close();
     }
     projectForm.reset();
-    // renderProjects(projectsDisplay());
+    // projectsToNavbar(projectsDisplay());
   });
 
   // Form and dialog - todo
@@ -104,10 +111,10 @@ export default function loadTodos() {
   const confirmBtn = addTodo.querySelector("#confirmBtn");
   const closeBtn = addTodo.querySelector("#closeBtn");
 
-  const title = document.querySelector("#title");
-  const description = document.querySelector("#description");
-  const deadline = document.querySelector("#deadline");
-  const priority = document.querySelector("#priority");
+  const title = addTodo.querySelector("#title");
+  const description = addTodo.querySelector("#description");
+  const deadline = addTodo.querySelector("#deadline");
+  const priority = addTodo.querySelector("#priority");
 
   // Storage - todo
   render(todosDisplay());
@@ -123,6 +130,7 @@ export default function loadTodos() {
 
   confirmBtn.addEventListener("click", (event) => {
     const formCheck = document.getElementById("todoForm").checkValidity();
+    let currentPro = getCurrentProject();
     if (!formCheck) {
       document.getElementById("todoForm").reportValidity();
     } else {
@@ -133,14 +141,14 @@ export default function loadTodos() {
         deadline.value,
         priority.value
       );
-      newTodoToStorage(todo);
+      newTodoToStorage(todo, currentPro);
       // refresh();
       addTodo.close();
     }
     todoForm.reset();
     render(todosDisplay());
   });
-
+  renderProject(projectView(currentProject()));
   // refresh();
 
   document.getElementById("todoForm").checkValidity();
