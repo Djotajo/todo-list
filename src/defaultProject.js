@@ -1,9 +1,13 @@
 import newProjectToStorage from "./newProjectToStorage";
 import newProject from "./newProject";
+import newProjectStorage from "./newProjectStorage";
 
 export default function defaultProject() {
-  localStorage.setItem("currentProject", "default");
-  return localStorage.getItem("currentProject");
+  const defaultProject = new newProject("default");
+  newProjectToStorage(defaultProject);
+  newProjectStorage(defaultProject);
+
+  //   return localStorage.getItem("currentProject");
 }
 
 // export default function defaultProject() {
