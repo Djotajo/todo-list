@@ -146,9 +146,10 @@ export default function loadTodos() {
       addTodo.close();
     }
     todoForm.reset();
-    render(todosDisplay());
+    // render(todosDisplay());
+    renderProject(projectView(getCurrentProject()));
   });
-  renderProject(projectView(currentProject()));
+  // renderProject(projectView(currentProject()));
   // refresh();
 
   document.getElementById("todoForm").checkValidity();

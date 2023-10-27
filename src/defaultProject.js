@@ -3,9 +3,16 @@ import newProject from "./newProject";
 import newProjectStorage from "./newProjectStorage";
 
 export default function defaultProject() {
+  // if((!localStorage.getItem("currentProject", "default")))
   const defaultProject = new newProject("default");
-  newProjectToStorage(defaultProject);
-  newProjectStorage(defaultProject);
+  let projectsArray = JSON.parse(localStorage.getItem("allProjects"));
+  if (
+    projectsArray.filter((item) => item.title === defaultProject.title)
+      .length === 0
+  ) {
+    newProjectToStorage(defaultProject);
+    newProjectStorage(defaultProject);
+  }
 
   //   return localStorage.getItem("currentProject");
 }
