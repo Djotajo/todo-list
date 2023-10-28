@@ -3,7 +3,7 @@ export default function newTodoForm() {
   <form id="todoForm">
       <p>
           <label for="title">Title</label>
-          <input type="text" size="30" id="title" name="title" required />
+          <input type="text" size="30" id="title" name="title" maxlength="25" required />
       </p>
       
       <p>

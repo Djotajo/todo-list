@@ -7,16 +7,22 @@ export default function navbar() {
 
   const navbarMain = document.createElement("div");
   navbarMain.classList.add("navbarItemContainer");
+  navbarMain.setAttribute("id", "navbarMain");
 
   const navbarAdditional = document.createElement("div");
   navbarAdditional.classList.add("navbarItemContainer");
   navbarAdditional.setAttribute("id", "navbarAdditional");
 
+  //
+  const navbarProjects = document.createElement("div");
+  navbarProjects.classList.add("navbarItemContainer");
+  navbarProjects.setAttribute("id", "navbarProjects");
+
   const todos = document.createElement("button");
   const notes = document.createElement("button");
   const checklists = document.createElement("button");
 
-  todos.innerHTML = "Todos";
+  todos.innerHTML = "Projects";
   todos.addEventListener("click", loadTodos);
 
   notes.innerHTML = "Notes";
@@ -27,12 +33,14 @@ export default function navbar() {
 
   navbar.classList.add("navbar");
 
+  navbarMain.appendChild(checklists);
   navbarMain.appendChild(todos);
   navbarMain.appendChild(notes);
-  navbarMain.appendChild(checklists);
 
   navbar.appendChild(navbarMain);
   navbar.appendChild(navbarAdditional);
+  //
+  navbar.appendChild(navbarProjects);
 
   return navbar;
 }

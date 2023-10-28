@@ -29,27 +29,38 @@ export default function loadTodos() {
   addNewProject.innerHTML = "Create new project";
 
   const addNewTodo = document.createElement("button");
-  addNewTodo.innerHTML = "Add New Todo or not Todo";
+  addNewTodo.innerHTML = "Add new todo";
 
   const sortByDateButton = document.createElement("button");
   sortByDateButton.innerHTML = "Sort by date";
   sortByDateButton.value = "off";
   sortByDateButton.addEventListener("click", function () {
-    render(sortByDate(todosDisplay(), sortByDateButton));
+    // render(sortByDate(todosDisplay(), sortByDateButton));
+    renderProject(
+      sortByDate(projectView(getCurrentProject()), sortByDateButton)
+    );
   });
+
+  // renderProject(projectView(getCurrentProject()));
 
   const sortByDeadlineButton = document.createElement("button");
   sortByDeadlineButton.innerHTML = "Sort by deadline";
   sortByDeadlineButton.value = "off";
   sortByDeadlineButton.addEventListener("click", function () {
-    render(sortByDeadline(todosDisplay(), sortByDeadlineButton));
+    // render(sortByDeadline(todosDisplay(), sortByDeadlineButton));
+    renderProject(
+      sortByDeadline(projectView(getCurrentProject()), sortByDeadlineButton)
+    );
   });
 
   const sortByPriorityButton = document.createElement("button");
   sortByPriorityButton.innerHTML = "Sort by priority";
   sortByPriorityButton.value = "off";
   sortByPriorityButton.addEventListener("click", function () {
-    render(sortByPriority(todosDisplay(), sortByPriorityButton));
+    // render(sortByPriority(todosDisplay(), sortByPriorityButton));
+    renderProject(
+      sortByPriority(projectView(getCurrentProject()), sortByPriorityButton)
+    );
   });
 
   const newProjectFormDiv = document.createElement("div");
@@ -61,6 +72,9 @@ export default function loadTodos() {
   const navbarAdditional = document.querySelector("#navbarAdditional");
   navbarAdditional.innerHTML = "";
 
+  const navbarProjects = document.querySelector("#navbarProjects");
+  navbarProjects.innerHTML = "";
+
   navbarAdditional.appendChild(addNewProject);
   navbarAdditional.appendChild(addNewTodo);
   navbarAdditional.appendChild(sortByDateButton);
@@ -68,7 +82,8 @@ export default function loadTodos() {
   navbarAdditional.appendChild(sortByPriorityButton);
   navbarAdditional.appendChild(newProjectFormDiv);
   navbarAdditional.appendChild(newTodoFormDiv);
-  navbarAdditional.appendChild(projectsToNavbar(projectsDisplay()));
+  // navbarAdditional.appendChild(projectsToNavbar(projectsDisplay()));
+  navbarProjects.appendChild(projectsToNavbar(projectsDisplay()));
 
   // Form and dialog - project
 
@@ -102,6 +117,7 @@ export default function loadTodos() {
       addProject.close();
     }
     projectForm.reset();
+    loadTodos();
     // projectsToNavbar(projectsDisplay());
   });
 

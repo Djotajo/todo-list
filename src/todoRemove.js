@@ -6,7 +6,6 @@ export default function todoRemove(
   element,
   list = JSON.parse(localStorage.getItem(getCurrentProject()))
 ) {
-  console.log(list);
   list.splice(
     list.findIndex((item) => item.title === element.title),
     1

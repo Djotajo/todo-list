@@ -9,6 +9,9 @@ export default function loadNotes() {
   const display = document.querySelector(".workspace");
   display.setAttribute("id", "Notes");
 
+  const navbarProjects = document.querySelector("#navbarProjects");
+  navbarProjects.innerHTML = "";
+
   // navbar elements
 
   const addNewNote = document.createElement("button");
@@ -27,9 +30,9 @@ export default function loadNotes() {
   const navbarAdditional = document.querySelector("#navbarAdditional");
   navbarAdditional.innerHTML = "";
 
-  navbarAdditional.appendChild(newNoteFormDiv);
   navbarAdditional.appendChild(addNewNote);
   navbarAdditional.appendChild(sortByDateButton);
+  navbarAdditional.appendChild(newNoteFormDiv);
 
   // Form and dialog
 
@@ -37,7 +40,7 @@ export default function loadNotes() {
   const confirmBtn = addNote.querySelector("#confirmBtn");
   const closeBtn = document.querySelector("#closeBtn");
 
-  const title = document.querySelector("#title");
+  // const title = document.querySelector("#title");
   const text = document.querySelector("#text");
 
   // Storage
@@ -59,7 +62,8 @@ export default function loadNotes() {
       document.getElementById("noteForm").reportValidity();
     } else {
       event.preventDefault();
-      const note = new newNote(title.value, text.value);
+      // const note = new newNote(title.value, text.value);
+      const note = new newNote(text.value);
       newNoteToStorage(note);
       // refresh();
       addNote.close();

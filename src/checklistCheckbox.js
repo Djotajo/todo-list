@@ -1,6 +1,5 @@
 export default function updateChecklistItem(checklistItem) {
   let checklistItemsArray = [];
-  console.log("bro");
   if (localStorage.getItem("allChecklistItems")) {
     checklistItemsArray = JSON.parse(localStorage.getItem("allChecklistItems"));
 

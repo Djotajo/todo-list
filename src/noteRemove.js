@@ -5,7 +5,7 @@ export default function noteRemove(
   list = JSON.parse(localStorage.getItem("allNotes"))
 ) {
   list.splice(
-    list.findIndex((item) => item.title === element.title),
+    list.findIndex((item) => item.text === element.text),
     1
   );
   localStorage.setItem("allNotes", JSON.stringify(list));

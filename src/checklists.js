@@ -10,6 +10,9 @@ export default function loadChecklist() {
   const display = document.querySelector(".workspace");
   display.setAttribute("id", "checklist");
 
+  const navbarProjects = document.querySelector("#navbarProjects");
+  navbarProjects.innerHTML = "";
+
   // navbar elements
 
   const addNewChecklistItem = document.createElement("button");
@@ -35,10 +38,10 @@ export default function loadChecklist() {
   const navbarAdditional = document.querySelector("#navbarAdditional");
   navbarAdditional.innerHTML = "";
 
-  navbarAdditional.appendChild(newChecklistItemFormDiv);
   navbarAdditional.appendChild(addNewChecklistItem);
   navbarAdditional.appendChild(sortByDateButton);
   navbarAdditional.appendChild(sortByStatusButton);
+  navbarAdditional.appendChild(newChecklistItemFormDiv);
 
   // Form and dialog
 

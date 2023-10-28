@@ -24,15 +24,14 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1vh;
   background-color: bisque;
 }
 
 .workspace {
   background-color: aquamarine;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
-  grid-template-rows: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 400px));
+  grid-template-rows: repeat(auto-fit, 400px);
   gap: 1vw;
   padding: 1vw;
 }
@@ -97,11 +96,25 @@ form > div {
 }
 
 form {
-  display: grid;
-  grid-template-rows: repeat(5 1fr);
-  gap: 3vh;
-  width: clamp(100px, 20%, 900px);
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1vh;
+  /* display: grid;
+  grid-template-rows: repeat(5 1fr); */
+  /* gap: 1vh; */
+  /* width: clamp(100px, 20%, 900px); */
 }
+
+/* #noteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-left: auto;
+  margin-right: auto;
+} */
 
 #showDialogLabel {
   display: flex;
@@ -109,21 +122,63 @@ form {
 }
 
 .todoObject {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: bisque;
   box-shadow: 10px 10px 8px #888888;
-  /* gap: 1vh; */
+  gap: 1vh;
   padding: 1vh;
+  overflow: auto;
+}
+
+.todoObject > p {
+  margin: 0;
 }
 
 .navbarItemContainer {
   display: flex;
   flex-direction: column;
+  /* margin-left: auto;
+  margin-right: auto; */
+  padding: 1vh;
+  gap: 1vh;
+}
+
+#navbarMain > button {
+  font-weight: 900;
+}
+
+#navbarAdditional > button {
+  font-weight: 600;
+}
+
+#navbarMain {
+  /* width: 90%; */
+  border-bottom: 1px solid black;
+}
+
+/* #navbarAdditional {
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  gap: 1vh;
+} */
+
+#navbarAdditional > div > p {
+  margin: 0;
+}
+
+.navbarItemContainer button {
+  border: none;
+  background-color: transparent;
+}
+
+.navbarItemContainer button:hover {
+  color: darkblue;
 }
 
 /* .workspace > :nth-child(1) {
@@ -146,9 +201,13 @@ form {
   background-color: transparent;
 }
 
-.checked {
+.checked :not(:last-child) {
   text-decoration: line-through;
   color: grey;
+}
+
+.checklistItemObject > :last-child:hover {
+  color: pink;
 }
 
 .checklistItemObject {
@@ -171,4 +230,45 @@ form {
 .navbar > :last-child > :last-child {
   display: flex;
   flex-direction: column;
+}
+
+.clicked {
+  background-color: pink;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: auto;
+  margin-right: auto; */
+  gap: 1vh;
+  list-style-type: square;
+}
+
+ul li button {
+  font-weight: 600;
+}
+
+.low {
+  background-color: green;
+}
+
+.medium {
+  background-color: yellow;
+}
+
+.high {
+  background-color: orange;
+}
+
+.todoObject > :nth-child(1) {
+  margin-bottom: auto;
+}
+
+/* .todoObject > :last-child {
+  /* margin-top: auto; */
+} */
+
+.todoObject > :nth-child(3) {
+  margin-top: auto;
 }

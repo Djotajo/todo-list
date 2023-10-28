@@ -2,6 +2,7 @@ import todoRemove from "./todoRemove";
 import noteRemove from "./noteRemove";
 import checklistItemRemove from "./checklistItemRemove";
 import updateChecklistItem from "./checklistCheckbox";
+import getCurrentProject from "./getCurrentProject";
 
 export default function render(lista) {
   const display = document.querySelector(".workspace");
@@ -28,9 +29,15 @@ export default function render(lista) {
     }
     for (const [key, value] of Object.entries(element)) {
       if (key != "status") {
-        let key = document.createElement("p");
-        key.innerHTML = `${value}`;
-        renderObject.appendChild(key);
+        if (key === "date") {
+          let first = document.createElement("p");
+          first.innerHTML = `${new Date(value).toDateString()}`;
+          renderObject.appendChild(first);
+        } else {
+          let second = document.createElement("p");
+          second.innerHTML = `${value}`;
+          renderObject.appendChild(second);
+        }
       }
     }
     const removeItem = document.createElement("button");
@@ -47,6 +54,7 @@ export default function render(lista) {
       });
     } else {
       renderObject.classList.add("checklistItemObject");
+      removeItem.classList.add("exception");
       removeItem.addEventListener("click", function () {
         checklistItemRemove(element);
       });
