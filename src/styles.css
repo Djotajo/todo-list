@@ -31,8 +31,8 @@
   background-color: #fffef0;
   box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 400px));
-  grid-template-rows: repeat(auto-fit, 400px);
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 400px)); */
+  /* grid-template-rows: repeat(auto-fit, 400px); */
   gap: 1vw;
   padding: 1vw;
 }
@@ -69,6 +69,8 @@ footer {
   color: white;
   background-color: blueviolet;
   overflow: hidden;
+  position: static;
+  bottom: 0;
 }
 
 footer p {
@@ -133,6 +135,7 @@ form {
   gap: 1vh;
   padding: 1vh;
   overflow: auto;
+  word-break: break-all;
 }
 
 .todoObject > p {
@@ -195,6 +198,7 @@ form {
   grid-auto-rows: min-content;
   align-items: start;
   justify-content: center;
+  overflow: auto;
 }
 
 #checklist button {
@@ -350,5 +354,28 @@ li {
     1fr
   ); /* do not set template columns and rows */
   grid-template-rows: unset;
+  overflow: auto;
+}
+
+#Todos {
+  /* display: grid;
+  height: 95%;
+  gap: 1vw; */
+  grid-auto-rows: minmax(400px, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: row;
+  overflow-y: scroll;
+  overflow: auto; */
+  display: grid;
+  /* grid-auto-rows: min-content; */
+  grid-auto-flow: row;
+  /* height: 95%; */
+  /* width: 100%; */
+  overflow-y: auto;
+}
+
+.todoObject > :nth-child(2) {
   overflow: auto;
 }
