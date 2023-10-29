@@ -2,7 +2,6 @@ export default function newProjectToStorage(newProject) {
   let projectsArray = [];
   if (localStorage.getItem("allProjects")) {
     projectsArray = JSON.parse(localStorage.getItem("allProjects"));
-    console.log(newProject, projectsArray);
     if (
       projectsArray.filter((item) => item.title === newProject.title).length ===
       0

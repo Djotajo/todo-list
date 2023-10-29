@@ -234,6 +234,7 @@ form {
 
 .clicked {
   background-color: pink;
+  color: green;
 }
 
 .navbar ul {
@@ -263,12 +264,29 @@ ul li button {
 
 .todoObject > :nth-child(1) {
   margin-bottom: auto;
+  font-weight: 600;
 }
 
 /* .todoObject > :last-child {
-  /* margin-top: auto; */
+  margin-top: auto;
 } */
 
 .todoObject > :nth-child(3) {
   margin-top: auto;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trashIcon {
+  width: 2vw;
+  height: 2vh;
+}
+
+.trashIcon:hover {
+  transform: rotate(360deg);
+  transition: 1000ms;
 }

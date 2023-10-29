@@ -4,6 +4,7 @@ import navbar from "./navbar";
 import workspace from "./workspace";
 import footer from "./footer";
 import gitLogo from "../assets/github-mark-white.png";
+// import deleteIcon from "../assets/delete.svg";
 
 export default function pageLoad() {
   const content = document.querySelector("#content");

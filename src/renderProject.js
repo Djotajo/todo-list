@@ -28,6 +28,10 @@ export default function renderProject(project) {
     if (element.hasOwnProperty("description")) {
       renderObject.classList.add("todoObject");
       renderObject.classList.add(priorityColor(element["priority"]));
+      renderObject.setAttribute(
+        "title",
+        `Created on ${new Date(element["date"]).toDateString()}`
+      );
       removeItem.addEventListener("click", function () {
         todoRemove(element);
       });

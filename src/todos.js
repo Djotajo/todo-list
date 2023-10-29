@@ -16,6 +16,8 @@ import renderProject from "./renderProject";
 import projectView from "./projectView";
 import defaultProject from "./defaultProject";
 import getCurrentProject from "./getCurrentProject";
+import deleteIcon from "../assets/delete.svg";
+import setCurrentProject from "./setCurrentProject";
 
 export default function loadTodos() {
   const display = document.querySelector(".workspace");
@@ -84,7 +86,10 @@ export default function loadTodos() {
   navbarAdditional.appendChild(newTodoFormDiv);
   // navbarAdditional.appendChild(projectsToNavbar(projectsDisplay()));
   navbarProjects.appendChild(projectsToNavbar(projectsDisplay()));
-
+  const trash = document.querySelectorAll(".trashIcon");
+  trash.forEach((element) => {
+    element.src = deleteIcon;
+  });
   // Form and dialog - project
 
   const addProject = document.getElementById("addProject");
@@ -113,6 +118,7 @@ export default function loadTodos() {
       event.preventDefault();
       const project = new newProject(projectTitle.value);
       newProjectToStorage(project);
+      setCurrentProject(projectTitle.value);
       // refresh();
       addProject.close();
     }
@@ -162,10 +168,8 @@ export default function loadTodos() {
       addTodo.close();
     }
     todoForm.reset();
-    // render(todosDisplay());
     renderProject(projectView(getCurrentProject()));
   });
-  // renderProject(projectView(currentProject()));
   // refresh();
 
   document.getElementById("todoForm").checkValidity();
