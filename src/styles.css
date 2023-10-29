@@ -358,21 +358,10 @@ li {
 }
 
 #Todos {
-  /* display: grid;
-  height: 95%;
-  gap: 1vw; */
-  grid-auto-rows: minmax(400px, 1fr);
+  grid-auto-rows: minmax(300px, 30%);
   grid-template-columns: repeat(4, 1fr);
-  /* grid-auto-rows: 1fr;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: row;
-  overflow-y: scroll;
-  overflow: auto; */
   display: grid;
-  /* grid-auto-rows: min-content; */
   grid-auto-flow: row;
-  /* height: 95%; */
-  /* width: 100%; */
   overflow-y: auto;
 }
 
