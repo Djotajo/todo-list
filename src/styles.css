@@ -28,7 +28,8 @@
 }
 
 .workspace {
-  background-color: aquamarine;
+  background-color: #fffef0;
+  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 400px));
   grid-template-rows: repeat(auto-fit, 400px);
@@ -275,6 +276,16 @@ ul li button {
   margin-top: auto;
 }
 
+.todoObject > button,
+.noteObject > button {
+  background-color: transparent;
+  border: none;
+}
+.todoObject > button:hover,
+.noteObject > button:hover {
+  font-weight: 600;
+}
+
 li {
   display: flex;
   justify-content: space-between;
@@ -289,4 +300,55 @@ li {
 .trashIcon:hover {
   transform: rotate(360deg);
   transition: 1000ms;
+}
+
+.noteObject {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: bisque; */
+  box-shadow: 2px 3px 20px #8a4d0f, 0 0 60px #8a4d0f inset;
+  background-color: #fffef0;
+  /* box-shadow: 10px 10px 8px #888888; */
+  gap: 1vh;
+  padding: 1vh;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  overflow: auto;
+}
+
+.noteObject > p {
+  margin: 0;
+}
+
+.noteObject > :nth-child(2) {
+  margin-top: auto;
+}
+
+#Notes {
+  /* background-color: aquamarine;
+  display: grid; */
+  /* grid-auto-columns: min-content; */
+  /* grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto; */
+  /* grid-auto-rows: min-content; */
+  /* grid-template-columns: fit-content(1fr); */
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 500px));
+  grid-template-rows: 10% minmax(0, 80%) 10%;
+  gap: 1vw;
+  padding: 1vw;
+  overflow: auto; */
+  display: grid;
+  align-items: center;
+  grid-auto-flow: row;
+  grid-auto-rows: min-content; /* play with this to change height of the children, 50% will fill half */
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* do not set template columns and rows */
+  grid-template-rows: unset;
+  overflow: auto;
 }

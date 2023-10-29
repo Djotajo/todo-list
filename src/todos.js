@@ -18,6 +18,7 @@ import defaultProject from "./defaultProject";
 import getCurrentProject from "./getCurrentProject";
 import deleteIcon from "../assets/delete.svg";
 import setCurrentProject from "./setCurrentProject";
+import loadCurrentProject from "./loadCurrentProject";
 
 export default function loadTodos() {
   const display = document.querySelector(".workspace");
@@ -171,6 +172,7 @@ export default function loadTodos() {
     renderProject(projectView(getCurrentProject()));
   });
   // refresh();
+  loadCurrentProject();
 
   document.getElementById("todoForm").checkValidity();
 }
